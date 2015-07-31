@@ -64,7 +64,7 @@ See API documentation [***PostcodeAnywhere Interactive RetrieveById (v1.30)***](
 Where:
 - 'retrieve' is performing action
 - 'RetrieveById' is a web service as per config file
-- 'param' - is array of parameters required for web service. (see [***API documentation***] (http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/retrievebyid/1.3/)
+- 'param' - is array of parameters required for web service. (see [***API documentation***] (http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/retrievebyid/1.3/))
 
 ```php
 $response = \PA::getRespose(['retrieve'=>'RetrieveById', 'param'=>['id'=>'23747212.00'] ]);
