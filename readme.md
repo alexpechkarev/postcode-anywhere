@@ -1,5 +1,7 @@
 # Laravel API wrapper for PCA Predict formerly Postcode Anywhere
 
+[![Build Status](https://travis-ci.org/alexpechkarev/postcode-anywhere.svg?branch=master)](https://travis-ci.org/alexpechkarev/postcode-anywhere)
+
 This wrapper simplifies process of making API calls to [**PostcodeAnywhere**](http://www.postcodeanywhere.co.uk/)  web services.
 Single line of code within your [**Laravel**](http://laravel.com/) application that's all it takes.
 
