@@ -12,7 +12,9 @@ Dependency
 Installation
 ------------
 
-To install edit `composer.json` by adding following line and issue `composer update` command in console.
+To install in console issue following command `composer require alexpechkarev/postcode-anywhere:dev-master`. 
+
+Alternatively edit `composer.json` by adding following line and issue `composer update` command in console.
 
 ```javascript
 "alexpechkarev/postcode-anywhere": "dev-master"
@@ -27,12 +29,12 @@ Once installed, register Laravel service provider, in your `config/app.php`:
 ```php
 'providers' => [
 	...
-    'Alexpechkarev\PostcodeAnywhere\PAServiceProvider',
+    'PostcodeAnywhere\PAServiceProvider',
 ]
 
 'aliases' => [
 	...
-    'PA' => 'Alexpechkarev\PostcodeAnywhere\PAFacade' ,
+    'PA' => 'PostcodeAnywhere\PAFacade' ,
 ]
 ```
 

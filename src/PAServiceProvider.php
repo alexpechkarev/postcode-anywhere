@@ -21,7 +21,7 @@ class PAServiceProvider extends ServiceProvider {
 	public function boot()
 	{
             $this->publishes([
-                    __DIR__.'/config/postcodeanywhere.php' => config_path('/'),
+                    __DIR__.'/config/postcodeanywhere.php' => config_path('/postcodeanywhere.php'),
                 ]);       
 	}
 
