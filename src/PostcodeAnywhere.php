@@ -61,7 +61,7 @@ class PostcodeAnywhere {
     |--------------------------------------------------------------------------
     | 
     | find - get data for given postcode 
-    | retrive - get full address data for give postcode ID
+    | retrieve - get full address data for give postcode ID
     */     
     private $requestType;
     
@@ -176,7 +176,7 @@ class PostcodeAnywhere {
     
     /**
      * Build request string, make call and return response
-     * find - type of request [find, retrive]
+     * find - type of request [find, retrieve]
      * param - array of required parameters for PA web service
      *  - endpoint - type of reponse, default json, [json, csv, xml ...]
      * 
@@ -191,7 +191,7 @@ class PostcodeAnywhere {
             throw new \ErrorException('No parameters are given.');
         }        
 
-       // determin request type find or retrive 
+       // determin request type find or retrieve 
        $this->setRequestType(array_keys($param));
        
        // set web service url as per config file
@@ -210,19 +210,19 @@ class PostcodeAnywhere {
     /***/
     
     /**
-     * Set request type find or retrive
+     * Set request type find or retrieve
      * @param array $action
      * @throws \ErrorException
      */
     protected function setRequestType( $action ){
         
         if( !in_array('find', $action)
-                && !in_array('retrive', $action)){
-            throw new \ErrorException('One of the following parameters "find" or "retrive" must be provided.');
+                && !in_array('retrieve', $action)){
+            throw new \ErrorException('One of the following parameters "find" or "retrieve" must be provided.');
         }
         
-        //determin request type find or retrive
-        $this->requestType = in_array('retrive', $action) ? 'retrive' : 'find';        
+        //determin request type find or retrieve
+        $this->requestType = in_array('retrieve', $action) ? 'retrieve' : 'find';        
     }
     /***/
     

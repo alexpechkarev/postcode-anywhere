@@ -95,7 +95,7 @@ return [
            
             
         ],
-        'retrive' => [
+        'retrieve' => [
             // PostcodeAnywhere Interactive RetrieveById (v1.30)
             'RetrieveById'          => 'PostcodeAnywhere/Interactive/RetrieveById/v1.30/',
             

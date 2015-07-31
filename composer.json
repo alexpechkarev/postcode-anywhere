@@ -1,7 +1,7 @@
 {
 	"name": "alexpechkarev/postcode-anywhere",
 	"description": "Laravel API wrapper for PCA Predict formerly Postcode Anywhere",
-	"keywords": ["postcode anywhere", "postcode lookup", "address lookup and validation", "api wrapper"],
+	"keywords": ["postcode anywhere", "postcode lookup", "address lookup", "find and retrieve"],
 	"license": "MIT",
         "authors": [
             {
