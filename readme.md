@@ -44,7 +44,7 @@ Configuration file have multidimensional array 'services' that defines web servi
 Usage
 -----
 Here is an example of making call to find address records for the given postcode. 
-API documentation [***PostcodeAnywhere Interactive FindByPostcode (v1.00)***](http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/findbypostcode/1/).
+See API documentation [***PostcodeAnywhere Interactive FindByPostcode (v1.00)***](http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/findbypostcode/1/) for details.
 
 Within your application call `\PA::getResponse()` with array of parameters. 
 
@@ -59,7 +59,7 @@ $response = \PA::getRespose(['find'=>'FindByPostcode', 'param'=>['postcode'=>'SW
 ```
 
 Here is another example of retrieving full address details based on the id. 
-API documentation [***PostcodeAnywhere Interactive RetrieveById (v1.30)***](http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/retrievebyid/1.3/)
+See API documentation [***PostcodeAnywhere Interactive RetrieveById (v1.30)***](http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/retrievebyid/1.3/) for details.
 
 Where:
 - 'retrieve' is performing action
