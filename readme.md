@@ -12,11 +12,14 @@ Dependency
 Installation
 ------------
 
-To install in console issue following command `composer require alexpechkarev/postcode-anywhere:dev-master`. 
+To install in console issue following command 
+```
+composer require alexpechkarev/postcode-anywhere:dev-master
+```
 
 Alternatively edit `composer.json` by adding following line and issue `composer update` command in console.
 
-```javascript
+```php
 "alexpechkarev/postcode-anywhere": "dev-master"
 ```
 
