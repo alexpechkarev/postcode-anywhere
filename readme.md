@@ -12,13 +12,11 @@ Dependency
 Installation
 ------------
 
-To install edit `composer.json` and add following line:
+To install edit `composer.json` by adding following line and issue `composer update` command in console.
 
 ```javascript
 "alexpechkarev/postcode-anywhere": "dev-master"
 ```
-
-Run `composer update`
 
 
 Configuration
@@ -38,11 +36,14 @@ Once installed, register Laravel service provider, in your `config/app.php`:
 ]
 ```
 
-Publish configuration file `php artisan vendor:publish` .
+In console issue following command to publish configuration file `php artisan vendor:publish` .
 To access the services do not forget to update the service key in configuration file. 
+
+Configuration file have multidimensional array 'services' that defines web services by type 'find' and 'retrive' and store each services request path. Fill free to add / remove any other PCA Predict services. 
 
 Usage
 -----
+to be updated...
 
 ```php
 $response = \PA::getRespose(['find' =>'FindByPostcode', 'param'=>['postcode' => 'SW1A 1AA', 'endpoint' => 'json'] ]);
