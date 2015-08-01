@@ -258,7 +258,7 @@ class PostcodeAnywhere {
             // is given endpoint correct
             $this->requestEndPoint = array_key_exists($param['endpoint'], $this->endPoints)
                                         ? $this->endPoints[$param['endpoint']]
-                                        : 'json';
+                                        : 'json.ws?';
             
             unset($param['endpoint']);
         } 
