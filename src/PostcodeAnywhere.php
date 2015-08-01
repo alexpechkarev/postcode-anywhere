@@ -250,7 +250,7 @@ class PostcodeAnywhere {
     protected function setEndPoint($param){
         
         //default end point
-        $this->requestEndPoint = 'json';
+        $this->requestEndPoint = 'json.ws?';
         
         //determin end point
         if(array_key_exists('endpoint', $param) ){
