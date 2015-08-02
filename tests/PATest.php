@@ -2,17 +2,14 @@
 
 class PATest extends TestCase {
 
-	/**
-	 * A basic functional test example.
-	 *
-	 * @return void
-	 */
-	public function testBasicExample()
-	{
-		$response = $this->call('GET', '/');
-                
-		$this->assertEquals(200, $response->getStatusCode());
-	}
-               
+        /**
+         * Can class be instantiated
+         */
+        public function testInstance(){
+            $inst = new \PostcodeAnywhere\PostcodeAnywhere();
+            
+            $this->assertInstanceOf('\PostcodeAnywhere\PostcodeAnywhere', $inst);
+        }
+        /***/  
 
 }

@@ -13,6 +13,11 @@
 	"require": { 
 		"laravel/framework": "5.*"
 	},
+
+        "require-dev": {
+            "laravel/framework": "5.*",
+            "phpunit/phpunit": "dev-master"
+        },         
 	"autoload": {
 		"psr-4": {
 			"PostcodeAnywhere\\": "src/"
