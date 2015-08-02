@@ -13,9 +13,7 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function __construct()
     {
-            #$this->app = require __DIR__.'/../bootstrap/app.php';
 
-            #$this->app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 
     }
 
@@ -26,10 +24,7 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function setUp()
     {
-//            if ( ! $this->app)
-//            {
-//                    $this->refreshApplication();
-//            }
+
     }
 
     /**
@@ -39,10 +34,7 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function tearDown()
     {
-//            if ($this->app)
-//            {
-//                    $this->app->flush();
-//            }
+
     }    
     
     
@@ -52,10 +44,7 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function testInstance(){
         
-        $this->assertTrue(TUE);
-//        $inst = new \PostcodeAnywhere\PostcodeAnywhere();
-//
-//        $this->assertInstanceOf('\PostcodeAnywhere\PostcodeAnywhere', $inst);
+        $this->assertTrue(TRUE);
     }
     /***/
                
