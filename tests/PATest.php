@@ -13,9 +13,9 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function __construct()
     {
-            $this->app = require __DIR__.'/../bootstrap/app.php';
+            #$this->app = require __DIR__.'/../bootstrap/app.php';
 
-            $this->app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+            #$this->app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 
     }
 
@@ -26,10 +26,10 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function setUp()
     {
-            if ( ! $this->app)
-            {
-                    $this->refreshApplication();
-            }
+//            if ( ! $this->app)
+//            {
+//                    $this->refreshApplication();
+//            }
     }
 
     /**
@@ -39,10 +39,10 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function tearDown()
     {
-            if ($this->app)
-            {
-                    $this->app->flush();
-            }
+//            if ($this->app)
+//            {
+//                    $this->app->flush();
+//            }
     }    
     
     
