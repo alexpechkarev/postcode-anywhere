@@ -16,7 +16,9 @@
 
         "require-dev": {
             "laravel/framework": "5.*",
-            "phpunit/phpunit": "dev-master"
+            "phpunit/phpunit": "dev-master",
+            "phpunit/php-invoker": "dev-master",
+            "mockery/mockery": "dev-master@dev"
         },         
 	"autoload": {
 		"psr-4": {
