@@ -14,7 +14,7 @@ Dependency
 Installation
 ------------
 
-To install in console issue following command 
+To install issue following command in console
 ```
 composer require alexpechkarev/postcode-anywhere:dev-master
 ```
@@ -43,10 +43,16 @@ Once installed, register Laravel service provider, in your `config/app.php`:
 ]
 ```
 
-In console issue following command to publish configuration file `php artisan vendor:publish` .
-To access the services do not forget to update the service key in configuration file. 
+Publish configuration file and don't forget to replace service key with your own:
+
+```php 
+    artisan vendor:publish
+``` 
+
+
 
 Configuration file have multidimensional array 'services' that defines web services by type 'find' and 'retrieve' and store each services request path. Feel free to add / remove any other PCA Predict services. 
+
 
 Usage
 -----
@@ -56,25 +62,33 @@ See API documentation [***PostcodeAnywhere Interactive FindByPostcode (v1.00)***
 Within your application call `\PA::getResponse()` with array of parameters. 
 
 Where:
-- 'find' is performing action
-- 'FindByPostcode' is a web service as per config file
+- 'find' - is performing action
+- 'FindByPostcode' - is a web service request path defined in configuration file
 - 'param' - is array of parameters required for web service. (see [***API documentation***] (http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/findbypostcode/1/))
 - 'endpoint' - is optional parameter defining type of response. When omitted defaults to `json`.
 
 ```php
-$response = \PA::getRespose(['find'=>'FindByPostcode', 'param'=>['postcode'=>'SW1A 1AA', 'endpoint'=>'json'] ]);
+$response = \PA::getRespose(
+                            [
+                                'find'=>'FindByPostcode', 
+                                'param'=>['postcode'=>'SW1A 1AA', 'endpoint'=>'json']
+                            ]);
 ```
 
 Here is another example of retrieving full address details based on the id. 
 See API documentation [***PostcodeAnywhere Interactive RetrieveById (v1.30)***](http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/retrievebyid/1.3/) for required parameters and response.
 
 Where:
-- 'retrieve' is performing action
-- 'RetrieveById' is a web service as per config file
+- 'retrieve' - is performing action
+- 'RetrieveById' - is a web service request path defined in configuration file
 - 'param' - is array of parameters required for web service. (see [***API documentation***] (http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/retrievebyid/1.3/))
 
 ```php
-$response = \PA::getRespose(['retrieve'=>'RetrieveById', 'param'=>['id'=>'23747212.00'] ]);
+$response = \PA::getRespose(
+                            [
+                                'retrieve'=>'RetrieveById', 
+                                'param'=>['id'=>'23747212.00'] 
+                            ]);
 ```
 
 
