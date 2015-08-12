@@ -13,7 +13,7 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function __construct()
     {
-        $this->config = include(__DIR__.'/../config/postcodeanywhere.php');
+        $this->config = include(__DIR__.'/../src/config/postcodeanywhere.php');
         
     }
 
