@@ -1,5 +1,6 @@
 <?php
 
+use PostcodeAnywhere\php\PostcodeAnywhere;
 
 class PATest extends PHPUnit_Framework_TestCase {
 
@@ -24,7 +25,7 @@ class PATest extends PHPUnit_Framework_TestCase {
      * Can class be instantiated
      */
     public function testInstance(){
-        $pa = new PostcodeAnywhere\php\PostcodeAnywhere( $this->config );
+        $pa = new PostcodeAnywhere( $this->config );
         $this->assertInstanceOf('\PostcodeAnywhere\php\PostcodeAnywhere', $pa);
     }
     /***/
