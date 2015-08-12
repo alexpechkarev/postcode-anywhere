@@ -46,7 +46,7 @@ Once installed, register Laravel service provider, in your `config/app.php`:
 Publish configuration file and don't forget to replace service key with your own:
 
 ```php 
-    artisan vendor:publish
+    php artisan vendor:publish
 ``` 
 
 
