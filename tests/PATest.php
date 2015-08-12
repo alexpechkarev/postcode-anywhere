@@ -24,7 +24,7 @@ class PATest extends PHPUnit_Framework_TestCase {
      * Can class be instantiated
      */
     public function testInstance(){
-        $pa = new \PostcodeAnywhere\php\PostcodeAnywhere( $this->config );
+        $pa = new PostcodeAnywhere\php\PostcodeAnywhere( $this->config );
         $this->assertInstanceOf('\PostcodeAnywhere\php\PostcodeAnywhere', $pa);
     }
     /***/
@@ -34,7 +34,7 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function testConfigException()
     {
-        $pa = new \APostcodeAnywhere\php\PostcodeAnywhere( [] );
+        $pa = new PostcodeAnywhere\php\PostcodeAnywhere( [] );
 
     } 
     
@@ -43,7 +43,7 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function testParamsException()
     {
-        $pa = new \PostcodeAnywhere\php\PostcodeAnywhere( ['params' =>[] ] );
+        $pa = new PostcodeAnywhere\php\PostcodeAnywhere( ['params' =>[] ] );
 
     } 
     
@@ -52,7 +52,7 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function testParamsKeyException()
     {
-        $pa = new \PostcodeAnywhere\php\PostcodeAnywhere( ['params' =>['key' => ''] ] );
+        $pa = new PostcodeAnywhere\php\PostcodeAnywhere( ['params' =>['key' => ''] ] );
     } 
     
      /**
@@ -60,7 +60,7 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function testUrlException()
     {
-        $pa = new \PostcodeAnywhere\php\PostcodeAnywhere( ['url' => ''] );
+        $pa = new PostcodeAnywhere\php\PostcodeAnywhere( ['url' => ''] );
     } 
     
      /**
@@ -68,7 +68,7 @@ class PATest extends PHPUnit_Framework_TestCase {
      */
     public function testServicesException()
     {
-        $pa = new \PostcodeAnywhere\php\PostcodeAnywhere( ['services' => ''] );
+        $pa = new PostcodeAnywhere\php\PostcodeAnywhere( ['services' => ''] );
     } 
     
      /**
@@ -77,14 +77,14 @@ class PATest extends PHPUnit_Framework_TestCase {
     public function testEndpointsException()
     {
 
-        $pa = new \PostcodeAnywhere\php\PostcodeAnywhere( ['endpoints' => ''] );
+        $pa = new PostcodeAnywhere\php\PostcodeAnywhere( ['endpoints' => ''] );
     } 
        
     
     
     public function testArrayHasKey(){
         
-        $pa = new \PostcodeAnywhere\php\PostcodeAnywhere( $this->config );
+        $pa = new PostcodeAnywhere\php\PostcodeAnywhere( $this->config );
         $this->assertNull($pa->serviceUrl);
         
     }
@@ -92,7 +92,7 @@ class PATest extends PHPUnit_Framework_TestCase {
     
     public function testSetRequestType(){
         
-        $pa = new \PostcodeAnywhere\php\PostcodeAnywhere( $this->config );
+        $pa = new PostcodeAnywhere\php\PostcodeAnywhere( $this->config );
         
         $pa->setRequestType([0 =>'find']);
         $this->assertEquals('find', $pa->requestType);
