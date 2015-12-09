@@ -59,36 +59,39 @@ Usage
 Here is an example of making call to find address records for the given postcode. 
 See API documentation [***PostcodeAnywhere Interactive FindByPostcode (v1.00)***](http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/findbypostcode/1/) for required parameters and response.
 
-Within your application call `\PA::getResponse()` with array of parameters. 
+Within your application call `\PA::getResponse( array $param )` with array of parameters. 
+```
+$param = [
+	'action' => 'Web Service',
+	'parameters' => 'array of parameters for Web Service called'
+];
+```
 
-Where:
-- 'find' - is performing action
-- 'FindByPostcode' - is a web service request path defined in configuration file
-- 'param' - is array of parameters required for web service. (see [***API documentation***] (http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/findbypostcode/1/))
-- 'endpoint' - is optional parameter defining type of response. When omitted defaults to `json`.
+Example:
+```
+$param = [
+	'find' => 'FindByPostcode', // perform 'find' action calling 'FindByPostcode' web service 
+	'param' => ['postcode'=>'SW1A 1AA', 'endpoint'=>'json'] // parameters for web service called
+];
+```
+
+Note: defaulted to `json` when `endpoint` parameter ommited.
 
 ```php
-$response = \PA::getRespose(
-                            [
-                                'find'=>'FindByPostcode', 
-                                'param'=>['postcode'=>'SW1A 1AA', 'endpoint'=>'json']
-                            ]);
+$response = \PA::getRespose( $param );
 ```
+
 
 Here is another example of retrieving full address details based on the id. 
 See API documentation [***PostcodeAnywhere Interactive RetrieveById (v1.30)***](http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/retrievebyid/1.3/) for required parameters and response.
 
-Where:
-- 'retrieve' - is performing action
-- 'RetrieveById' - is a web service request path defined in configuration file
-- 'param' - is array of parameters required for web service. (see [***API documentation***] (http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/retrievebyid/1.3/))
-
 ```php
-$response = \PA::getRespose(
-                            [
-                                'retrieve'=>'RetrieveById', 
-                                'param'=>['id'=>'23747212.00'] 
-                            ]);
+$param = [
+	'retrieve'=>'RetrieveById', 
+        'param'=>['id'=>'23747212.00'] 
+];
+
+$response = \PA::getRespose( $param );
 ```
 
 
