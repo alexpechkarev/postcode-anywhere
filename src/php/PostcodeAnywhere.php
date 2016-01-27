@@ -181,11 +181,11 @@ class PostcodeAnywhere {
      * param - array of required parameters for PA web service
      *  - endpoint - type of reponse, default json, [json, csv, xml ...]
      * 
-     * return \PA::getRespose(['find' =>'FindByPostcode','param'=>['postcode' => 'SW1A 1AA', 'endpoint' => 'json'] ])
+     * return \PA::getResponse(['find' =>'FindByPostcode','param'=>['postcode' => 'SW1A 1AA', 'endpoint' => 'json'] ])
      * @param array $param - ['find' => ['postcode'=>'SW1A 1AA', 'endpoing'=> 'json'] ]
      * @return object
      */
-    public function getRespose($param = []){
+    public function getResponse($param = []){
         
         if( empty( $param ) ){
             

@@ -78,7 +78,7 @@ $param = [
 Note: defaulted to `json` when `endpoint` parameter ommited.
 
 ```php
-$response = \PA::getRespose( $param );
+$response = \PA::getResponse( $param );
 ```
 
 
@@ -91,7 +91,7 @@ $param = [
         'param'=>['id'=>'23747212.00'] 
 ];
 
-$response = \PA::getRespose( $param );
+$response = \PA::getResponse( $param );
 ```
 
 
