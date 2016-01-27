@@ -17,7 +17,7 @@ return [
     */
 
     'params' => [        
-        'key'       => 'AA11-AA11-AA11-AA11', //The key to use to authenticate to the service.
+        'key'       => env('PCA_KEY', 'AA11-AA11-AA11-AA11'), //The key to use to authenticate to the service.
         ],
 
     
@@ -44,10 +44,10 @@ return [
 
     'services' => [
         'find' => [
-            //PostcodeAnywhere Interactive Find (v1.10)
+            // PostcodeAnywhere Interactive Find (v1.10)
             'PAInteractiveFind'     => 'PostcodeAnywhere/Interactive/Find/v1.10/',
             
-            //PostcodeAnywhere Interactive FindByPostcode (v1.00)
+            // PostcodeAnywhere Interactive FindByPostcode (v1.00)
             'FindByPostcode'        => 'PostcodeAnywhere/Interactive/FindByPostcode/v1.00/',
             
             // CapturePlus Interactive Find (v2.10)
@@ -56,19 +56,19 @@ return [
             // PostcodeAnywhere Interactive FindByAreaId (v1.00)
             'FindByAreaId'          => 'PostcodeAnywhere/Interactive/FindByAreaId/v1.00/',
             
-            //PostcodeAnywhere Interactive FindByBuilding (v1.00)
+            // PostcodeAnywhere Interactive FindByBuilding (v1.00)
             'FindByBuilding'        => 'PostcodeAnywhere/Interactive/FindByBuilding/v1.00/',
             
-            //PostcodeAnywhere Interactive FindByLocalityId (v1.00)
+            // PostcodeAnywhere Interactive FindByLocalityId (v1.00)
             'FindByLocalityId'      => 'PostcodeAnywhere/Interactive/FindByLocalityId/v1.00/',
             
-            //PostcodeAnywhere Interactive FindByOrganisation (v1.00)
+            // PostcodeAnywhere Interactive FindByOrganisation (v1.00)
             'FindByOrganisation'    => 'PostcodeAnywhere/Interactive/FindByOrganisation/v1.00/',
             
-            //PostcodeAnywhere Interactive FindByPartialPostcode (v1.00)
+            // PostcodeAnywhere Interactive FindByPartialPostcode (v1.00)
             'FindByPartialPostcode' => 'PostcodeAnywhere/Interactive/FindByPartialPostcode/v1.00/',
             
-            //PostcodeAnywhere Interactive FindByParts (v1.00)
+            // PostcodeAnywhere Interactive FindByParts (v1.00)
             'FindByParts'           => 'PostcodeAnywhere/Interactive/FindByParts/v1.00/',
             
             // PostcodeAnywhere Interactive FindByPoBox (v1.00)
@@ -89,7 +89,7 @@ return [
             // PostcodeAnywhere Interactive ListAreas (v1.00)
             'ListAreas'             => 'PostcodeAnywhere/Interactive/ListAreas/v1.00/',
             
-           // PostcodeAnywhere Interactive ListCounties (v1.00)
+            // PostcodeAnywhere Interactive ListCounties (v1.00)
             'ListCounties'          => 'PostcodeAnywhere/Interactive/ListCounties/v1.00/',
             
            
@@ -99,7 +99,7 @@ return [
             // PostcodeAnywhere Interactive RetrieveById (v1.30)
             'RetrieveById'          => 'PostcodeAnywhere/Interactive/RetrieveById/v1.30/',
             
-            //PostcodeAnywhere Interactive RetrieveByAddress (v1.20)
+            // PostcodeAnywhere Interactive RetrieveByAddress (v1.20)
             'RetrieveByAddress'     => 'PostcodeAnywhere/Interactive/RetrieveByAddress/v1.20/',
             
             // CapturePlus Interactive Retrieve (v2.10)
