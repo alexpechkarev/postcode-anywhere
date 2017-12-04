@@ -19,8 +19,12 @@ class PostcodeAnywhere {
     | Postcode - required
     | The postcode to search with find.
     |
+    |--------------------------------------------------------------------------
+    | Bank account validation parameters
+    |--------------------------------------------------------------------------
+    | Sortcode - Required
     |
-    */     
+    */
     private $params ;
     
     /*
@@ -28,32 +32,30 @@ class PostcodeAnywhere {
     | Request data
     |--------------------------------------------------------------------------
     | Holds request data
-    */    
-    private $request = []; 
+    */
+    private $request = [];
     
     /*
     |--------------------------------------------------------------------------
     | Web service URL
     |--------------------------------------------------------------------------
-    */     
-    private $url;    
+    */
+    private $url;
     
     
     /*
     |--------------------------------------------------------------------------
     | Array of available services
     |--------------------------------------------------------------------------
-    */     
-    private $services;      
+    */
+    private $services;
     
     /*
     |--------------------------------------------------------------------------
     | Service Url
     |--------------------------------------------------------------------------
-    */     
+    */
     private $serviceUrl;
-    
-     
     
     /*
     |--------------------------------------------------------------------------
@@ -62,7 +64,7 @@ class PostcodeAnywhere {
     | 
     | find - get data for given postcode 
     | retrieve - get full address data for give postcode ID
-    */     
+    */
     private $requestType;
     
     
@@ -71,8 +73,8 @@ class PostcodeAnywhere {
     | Request end point
     |--------------------------------------------------------------------------
     | 
-    */     
-    private $requestEndPoint;    
+    */
+    private $requestEndPoint;
     
     
     /*
@@ -80,8 +82,8 @@ class PostcodeAnywhere {
     | Available end points
     |--------------------------------------------------------------------------
     | 
-    */     
-    private $endPoints;      
+    */
+    private $endPoints;
      
     
     
@@ -91,8 +93,8 @@ class PostcodeAnywhere {
     |--------------------------------------------------------------------------
     | 
     | final service URL with parameters build in
-    */     
-    private $requestUrl;    
+    */
+    private $requestUrl;
     
     
 
@@ -102,21 +104,17 @@ class PostcodeAnywhere {
      * Class constructor
      */
     public function __construct()
-      {
-        
+    {
         $this->validateConfig();
-      }
-      /***/
+    }
 
     /**
      * Validate configuration file
      * @throws \ErrorException
-     */ 
-    protected function validateConfig(){
-        
+     */
+    protected function validateConfig(){        
             // Check for config file
-            if( !\Config::has('postcodeanywhere')){
-                
+            if (!\Config::has('postcodeanywhere')) {
                 throw new \ErrorException('Unable to find config file.');
             }
             // Read config file
