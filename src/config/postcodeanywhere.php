@@ -14,11 +14,16 @@ return [
     | Postcode - required
     | The postcode to search with find.
     |
+    |--------------------------------------------------------------------------
+    | Bank account validation parameters
+    |--------------------------------------------------------------------------
+    | Sortcode - Required
+    |
     */
 
-    'params' => [        
-        'key'       => env('PCA_KEY', 'AA11-AA11-AA11-AA11'), //The key to use to authenticate to the service.
-        ],
+    'params' => [
+        'key' => env('PCA_KEY', 'AA11-AA11-AA11-AA11'), //The key to use to authenticate to the service.
+    ],
 
     
     /*
@@ -44,6 +49,9 @@ return [
 
     'services' => [
         'find' => [
+            // PostcodeAnywhere Interactive RetrieveBySortcode (v1.00)
+            'BankAccountValidation' => 'BankAccountValidation/Interactive/RetrieveBySortcode/v1.00/',
+
             // PostcodeAnywhere Interactive Find (v1.10)
             'PAInteractiveFind'     => 'PostcodeAnywhere/Interactive/Find/v1.10/',
             
