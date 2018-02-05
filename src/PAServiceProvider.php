@@ -3,70 +3,63 @@
 use Illuminate\Support\ServiceProvider;
 
 
-class PAServiceProvider extends ServiceProvider {
-    
-	/**
-	 * Indicates if loading of the provider is deferred.
-	 *
-	 * @var bool
-	 */
-	protected $defer = false;
-        
+class PAServiceProvider extends ServiceProvider
+{
 
-	/**
-	 * Bootstrap the application services.
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
-            $this->publishes([
-                    __DIR__.'/config/postcodeanywhere.php' => config_path('/postcodeanywhere.php'),
-                ]);       
-	}
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = false;
 
-	/**
-	 * Register the application services.
-	 *
-	 * @return void
-	 */
-	public function register()
-	{
 
-            $this->registerPostcodeAnywhere();
+    /**
+     * Bootstrap the application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__ . '/config/postcodeanywhere.php' => config_path('/postcodeanywhere.php'),
+        ]);
+    }
 
-            $this->app->alias('pa', 'PoscodeAnywhere\PosctodeAnywhere');  
-            
-            
-	}
-        /***/
-        
-	/**
-	 * Register the PostcodeAnywheer builder instance.
-	 *
-	 * @return void
-	 */
-	protected function registerPostcodeAnywhere()
-	{
-		$this->app->bind('pa', function($app)
-		{
-			return new PostcodeAnywhere();
-		});
-	}        
-        
-	/**
-	 * Get the services provided by the provider.
-	 *
-	 * @return array
-	 */
-	public function provides()
-	{
-            return array('pa');
-	}        
-        
-        
+    /**
+     * Register the application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->registerPostcodeAnywhere();
 
-        
-        
+        $this->app->alias('pa', 'PoscodeAnywhere\PosctodeAnywhere');
+    }
+    /***/
+
+    /**
+     * Register the PostcodeAnywheer builder instance.
+     *
+     * @return void
+     */
+    protected function registerPostcodeAnywhere()
+    {
+        $this->app->bind('pa', function ($app) {
+            return new PostcodeAnywhere();
+        });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return ['pa'];
+    }
+
 
 }
