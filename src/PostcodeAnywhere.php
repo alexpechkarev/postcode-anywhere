@@ -5,7 +5,8 @@
  *
  * @author Alexander Pechkarev
  */
-class PostcodeAnywhere {
+class PostcodeAnywhere
+{
 
 
     /*
@@ -25,7 +26,7 @@ class PostcodeAnywhere {
     | Sortcode - Required
     |
     */
-    private $params ;
+    private $params;
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +87,6 @@ class PostcodeAnywhere {
     private $endPoints;
 
 
-
     /*
     |--------------------------------------------------------------------------
     | Request URL
@@ -95,9 +95,6 @@ class PostcodeAnywhere {
     | final service URL with parameters build in
     */
     private $requestUrl;
-
-
-
 
 
     /**
@@ -112,55 +109,56 @@ class PostcodeAnywhere {
      * Validate configuration file
      * @throws \ErrorException
      */
-    protected function validateConfig(){
-            // Check for config file
-            if (!\Config::has('postcodeanywhere')) {
-                throw new \ErrorException('Unable to find PostcodeAnywhere config file.');
-            }
-            // Read config file
-            $config = \Config::get('postcodeanywhere', []);
+    protected function validateConfig()
+    {
+        // Check for config file
+        if (!\Config::has('postcodeanywhere')) {
+            throw new \ErrorException('Unable to find PostcodeAnywhere config file.');
+        }
+        // Read config file
+        $config = \Config::get('postcodeanywhere', []);
 
-            // Validate Key parameter
-            if(!array_key_exists('params', $config)
-                    || !array_key_exists('key', $config['params'])
-                    || empty( $config['params']['key'])){
-                throw new \ErrorException('Postcode Anywhere Key must be set in config file.');
-            }
+        // Validate Key parameter
+        if (!array_key_exists('params', $config)
+            || !array_key_exists('key', $config['params'])
+            || empty($config['params']['key'])) {
+            throw new \ErrorException('Postcode Anywhere Key must be set in config file.');
+        }
 
-            // Validate Key parameter
-            if(
-                !array_key_exists('url', $config) ||
-                !is_array($config['url']) ||
-                count($config['url']) < 1
-            ) {
-                throw new \ErrorException('Web service URL is not set in config file.');
-            }
+        // Validate Key parameter
+        if (
+            !array_key_exists('url', $config) ||
+            !is_array($config['url']) ||
+            count($config['url']) < 1
+        ) {
+            throw new \ErrorException('Web service URL is not set in config file.');
+        }
 
-            // Validate Service URL parameters
-            if(
-                !array_key_exists('services', $config) ||
-                !is_array($config['services']) ||
-                count($config['services']) < 1
-            ) {
-                throw new \ErrorException('Service URLs must be set in config file');
-            }
-
-
-            // Validate Endpoint
-            if(
-                !array_key_exists('endpoint', $config) ||
-                !is_array($config['endpoint']) ||
-                count($config['endpoint']) < 1
-            ) {
-                throw new \ErrorException('End point must be set in config file');
-            }
+        // Validate Service URL parameters
+        if (
+            !array_key_exists('services', $config) ||
+            !is_array($config['services']) ||
+            count($config['services']) < 1
+        ) {
+            throw new \ErrorException('Service URLs must be set in config file');
+        }
 
 
-            // Assisgn values
-            $this->params           = $config['params'];
-            $this->url              = $config['url'];
-            $this->services         = $config['services'];
-            $this->endPoints        = $config['endpoint'];
+        // Validate Endpoint
+        if (
+            !array_key_exists('endpoint', $config) ||
+            !is_array($config['endpoint']) ||
+            count($config['endpoint']) < 1
+        ) {
+            throw new \ErrorException('End point must be set in config file');
+        }
+
+
+        // Assisgn values
+        $this->params = $config['params'];
+        $this->url = $config['url'];
+        $this->services = $config['services'];
+        $this->endPoints = $config['endpoint'];
 
     }
     /***/
@@ -171,14 +169,14 @@ class PostcodeAnywhere {
      * @param string $key
      * @param string $value
      */
-    public function setParam($key, $value){
+    public function setParam($key, $value)
+    {
 
-        if( array_key_exists($key, $this->params) ){
+        if (array_key_exists($key, $this->params)) {
             $this->params[$key] = $value;
         }
     }
     /***/
-
 
 
     /**
@@ -191,26 +189,27 @@ class PostcodeAnywhere {
      * @param array $param - ['find' => ['postcode'=>'SW1A 1AA', 'endpoing'=> 'json'] ]
      * @return object
      */
-    public function getResponse($param = []){
+    public function getResponse($param = [])
+    {
 
-        if( empty( $param ) ){
+        if (empty($param)) {
 
             throw new \ErrorException('No parameters are given.');
         }
 
-       // determin request type find or retrieve
-       $this->setRequestType(array_keys($param));
+        // determin request type find or retrieve
+        $this->setRequestType(array_keys($param));
 
-       // set web service url as per config file
-       $this->setServiceUrl( $param[$this->requestType] );
+        // set web service url as per config file
+        $this->setServiceUrl($param[$this->requestType]);
 
-        if( !array_key_exists('param',$param) ){
+        if (!array_key_exists('param', $param)) {
 
             throw new \ErrorException('Request parameters must be given.');
         }
 
         // set endpoing and build url params
-        $this->setAlParams( $this->setEndPoint($param['param']) );
+        $this->setAlParams($this->setEndPoint($param['param']));
 
         return $this->makeRequest();
     }
@@ -221,10 +220,11 @@ class PostcodeAnywhere {
      * @param array $action
      * @throws \ErrorException
      */
-    protected function setRequestType( $action ){
+    protected function setRequestType($action)
+    {
 
-        if( !in_array('find', $action)
-                && !in_array('retrieve', $action)){
+        if (!in_array('find', $action)
+            && !in_array('retrieve', $action)) {
             throw new \ErrorException('One of the following parameters "find" or "retrieve" must be provided.');
         }
 
@@ -238,14 +238,15 @@ class PostcodeAnywhere {
      * @param string $serviceUrl
      * @throws \ErrorException
      */
-    protected function setServiceUrl($serviceUrl){
+    protected function setServiceUrl($serviceUrl)
+    {
 
-        if( !array_key_exists($serviceUrl, $this->services[ $this->requestType]) ){
+        if (!array_key_exists($serviceUrl, $this->services[$this->requestType])) {
 
-            throw new \ErrorException('Web service '.$serviceUrl.' has no URL defined in config file.');
+            throw new \ErrorException('Web service ' . $serviceUrl . ' has no URL defined in config file.');
         }
 
-        $this->serviceUrl = $this->services[ $this->requestType ][ $serviceUrl ];
+        $this->serviceUrl = $this->services[$this->requestType][$serviceUrl];
     }
     /***/
 
@@ -254,18 +255,19 @@ class PostcodeAnywhere {
      * @param array $param
      * @return array
      */
-    protected function setEndPoint($param){
+    protected function setEndPoint($param)
+    {
 
         //default end point
         $this->requestEndPoint = 'json.ws?';
 
         //determin end point
-        if(array_key_exists('endpoint', $param) ){
+        if (array_key_exists('endpoint', $param)) {
 
             // is given endpoint correct
             $this->requestEndPoint = array_key_exists($param['endpoint'], $this->endPoints)
-                                        ? $this->endPoints[$param['endpoint']]
-                                        : 'json.ws?';
+                ? $this->endPoints[$param['endpoint']]
+                : 'json.ws?';
 
             unset($param['endpoint']);
         }
@@ -278,9 +280,10 @@ class PostcodeAnywhere {
      * Assign all parameters at once
      * @param type $params
      */
-    protected function setAlParams($params){
+    protected function setAlParams($params)
+    {
 
-        if(is_array($params) ){
+        if (is_array($params)) {
 
             $this->params = array_merge($this->params, $params);
         }
@@ -294,20 +297,20 @@ class PostcodeAnywhere {
      *
      * @return type
      */
-    protected function buildRequest(){
+    protected function buildRequest()
+    {
         $this->request = [];
-        foreach($this->params as $key=>$val)
-        {
-                // ommit parameters with empty values
-                if( !empty( $val )){
-                    $this->request[] = $key . '=' .urlencode($val);
-                }
+        foreach ($this->params as $key => $val) {
+            // ommit parameters with empty values
+            if (!empty($val)) {
+                $this->request[] = $key . '=' . urlencode($val);
+            }
         }
 
-        $this->requestUrl = $this->url.$this->serviceUrl.$this->requestEndPoint;
+        $this->requestUrl = $this->url . $this->serviceUrl . $this->requestEndPoint;
 
 
-        $this->requestUrl.= implode('&',$this->request);
+        $this->requestUrl .= implode('&', $this->request);
 
     }
     /***/
@@ -316,27 +319,29 @@ class PostcodeAnywhere {
      * Make request
      * @return object
      */
-    protected function makeRequest(){
+    protected function makeRequest()
+    {
 
-       /**
+        /**
          *  building requst URL with parameters
          *  - request type must be set
          *  - parameters must be set
          */
         $this->buildRequest();
 
-       $ch = curl_init( $this->requestUrl );
-       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $ch = curl_init($this->requestUrl);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-       $output = curl_exec($ch);
+        $output = curl_exec($ch);
 
-      if( $output === false ){
-          throw new \ErrorException( curl_error($ch) );
-      }
+        if ($output === false) {
+            throw new \ErrorException(curl_error($ch));
+        }
 
 
-      curl_close($ch);
-      return $output;
+        curl_close($ch);
+
+        return $output;
 
     }
     /***/

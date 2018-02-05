@@ -120,7 +120,6 @@ class PostcodeAnywhere
      */
     protected function validateConfig()
     {
-
         // Validate Key parameter
         if (!array_key_exists('params', $this->config)
             || !array_key_exists('key', $this->config['params'])
@@ -129,21 +128,30 @@ class PostcodeAnywhere
         }
 
         // Validate Key parameter
-        if (!array_key_exists('url', $this->config)
-            || empty($this->config['url'])) {
+        if (
+            !array_key_exists('url', $this->config) ||
+            !is_array($this->config['url']) ||
+            count($this->config['url']) < 1
+        ) {
             throw new \ErrorException('Web service URL is not set in config file.');
         }
 
         // Validate Service URL parameters
-        if (!array_key_exists('services', $this->config)
-            || !count($this->config['services'] < 1)) {
+        if (
+            !array_key_exists('services', $this->config) ||
+            !is_array($this->config['services']) ||
+            count($this->config['services']) < 1
+        ) {
             throw new \ErrorException('Service URLs must be set in config file');
         }
 
 
         // Validate Endpoint
-        if (!array_key_exists('endpoint', $this->config)
-            || !count($this->config['endpoint'] < 1)) {
+        if (
+            !array_key_exists('endpoint', $this->config) ||
+            !is_array($this->config['endpoint']) ||
+            count($this->config['endpoint']) < 1
+        ) {
             throw new \ErrorException('End point must be set in config file');
         }
 
