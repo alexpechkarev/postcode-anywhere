@@ -113,10 +113,10 @@ class PostcodeAnywhere
     {
         // Check for config file
         if (!\Config::has('postcodeanywhere')) {
-            throw new \ErrorException('Unable to find config file.');
+            throw new \ErrorException('Unable to find PostcodeAnywhere config file.');
         }
         // Read config file
-        $config = \Config::get('postcodeanywhere');
+        $config = \Config::get('postcodeanywhere', []);
 
         // Validate Key parameter
         if (!array_key_exists('params', $config)
@@ -126,21 +126,30 @@ class PostcodeAnywhere
         }
 
         // Validate Key parameter
-        if (!array_key_exists('url', $config)
-            || empty($config['url'])) {
+        if (
+            !array_key_exists('url', $config) ||
+            !is_array($config['url']) ||
+            count($config['url']) < 1
+        ) {
             throw new \ErrorException('Web service URL is not set in config file.');
         }
 
         // Validate Service URL parameters
-        if (!array_key_exists('services', $config)
-            || !count($config['services'] < 1)) {
+        if (
+            !array_key_exists('services', $config) ||
+            !is_array($config['services']) ||
+            count($config['services']) < 1
+        ) {
             throw new \ErrorException('Service URLs must be set in config file');
         }
 
 
         // Validate Endpoint
-        if (!array_key_exists('endpoint', $config)
-            || !count($config['endpoint'] < 1)) {
+        if (
+            !array_key_exists('endpoint', $config) ||
+            !is_array($config['endpoint']) ||
+            count($config['endpoint']) < 1
+        ) {
             throw new \ErrorException('End point must be set in config file');
         }
 
@@ -182,7 +191,9 @@ class PostcodeAnywhere
      */
     public function getResponse($param = [])
     {
+
         if (empty($param)) {
+
             throw new \ErrorException('No parameters are given.');
         }
 
@@ -193,6 +204,7 @@ class PostcodeAnywhere
         $this->setServiceUrl($param[$this->requestType]);
 
         if (!array_key_exists('param', $param)) {
+
             throw new \ErrorException('Request parameters must be given.');
         }
 
@@ -210,6 +222,7 @@ class PostcodeAnywhere
      */
     protected function setRequestType($action)
     {
+
         if (!in_array('find', $action)
             && !in_array('retrieve', $action)) {
             throw new \ErrorException('One of the following parameters "find" or "retrieve" must be provided.');
@@ -227,6 +240,7 @@ class PostcodeAnywhere
      */
     protected function setServiceUrl($serviceUrl)
     {
+
         if (!array_key_exists($serviceUrl, $this->services[$this->requestType])) {
 
             throw new \ErrorException('Web service ' . $serviceUrl . ' has no URL defined in config file.');
@@ -268,6 +282,7 @@ class PostcodeAnywhere
      */
     protected function setAlParams($params)
     {
+
         if (is_array($params)) {
 
             $this->params = array_merge($this->params, $params);
@@ -306,6 +321,7 @@ class PostcodeAnywhere
      */
     protected function makeRequest()
     {
+
         /**
          *  building requst URL with parameters
          *  - request type must be set
@@ -326,6 +342,7 @@ class PostcodeAnywhere
         curl_close($ch);
 
         return $output;
+
     }
     /***/
 
