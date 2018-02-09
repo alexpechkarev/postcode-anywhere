@@ -130,8 +130,7 @@ class PostcodeAnywhere
         // Validate Key parameter
         if (
             !array_key_exists('url', $this->config) ||
-            !is_array($this->config['url']) ||
-            count($this->config['url']) < 1
+            empty($this->config['url'])
         ) {
             throw new \ErrorException('Web service URL is not set in config file.');
         }
