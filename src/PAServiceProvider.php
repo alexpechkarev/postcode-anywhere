@@ -35,7 +35,7 @@ class PAServiceProvider extends ServiceProvider
     {
         $this->registerPostcodeAnywhere();
 
-        $this->app->alias('pa', 'PoscodeAnywhere\PosctodeAnywhere');
+        $this->app->alias('pa', PostcodeAnywhere::class);
     }
     /***/
 
