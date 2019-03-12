@@ -5,7 +5,7 @@
 This wrapper simplifies process of making API calls to [**Loqate**](https://www.loqate.com/en-gb/)  web services down to a single line of code within your [**Laravel**](http://laravel.com/) application!
 
 ## Dependency
-This package requires the [**PHP cURL**] (http://php.net/manual/en/curl.installation.php) extension to be installed on your system.
+This package requires the [**PHP cURL**](http://php.net/manual/en/curl.installation.php) extension to be installed on your system.
 
 ## Installation
 
