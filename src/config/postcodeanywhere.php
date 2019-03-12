@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default parameters
@@ -16,26 +15,20 @@ return [
         'key' => env('PCA_KEY', 'AA11-AA11-AA11-AA11'),
     ],
 
-
     /*
     |--------------------------------------------------------------------------
     | Service URL
     |--------------------------------------------------------------------------
-    |
-    |
     */
 
     'url' => 'https://services.postcodeanywhere.co.uk/',
-
 
     /*
     |--------------------------------------------------------------------------
     | Registered Web Services
     |--------------------------------------------------------------------------
-    | http://www.postcodeanywhere.co.uk/support/webservices/
-    |
+    | @see http://www.postcodeanywhere.co.uk/support/webservices/
     */
-
 
     'services' => [
         'find' => [
@@ -89,8 +82,6 @@ return [
 
             // PostcodeAnywhere Interactive ListCounties (v1.00)
             'ListCounties' => 'PostcodeAnywhere/Interactive/ListCounties/v1.00/',
-
-
         ],
         'retrieve' => [
             // PostcodeAnywhere Interactive RetrieveById (v1.30)
@@ -118,16 +109,12 @@ return [
             'RetrieveHistoryById' => 'PostcodeAnywhere/Interactive/RetrieveHistoryById/v1.00/',
 
         ],
-
     ],
-
 
     /*
     |--------------------------------------------------------------------------
     | End point
     |--------------------------------------------------------------------------
-    |
-    |
     */
 
     'endpoint' => [
@@ -145,8 +132,5 @@ return [
         'image' => 'image.ws?',
         'pdf' => 'pdf.ws?',
         'psv' => 'psv.ws?',
-
     ],
-
-
 ];
