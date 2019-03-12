@@ -7,7 +7,16 @@ This wrapper simplifies process of making API calls to [**Loqate**](https://www.
 ## Dependency
 This package requires the [**PHP cURL**](http://php.net/manual/en/curl.installation.php) extension to be installed on your system.
 
+## Contents
+
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Support](#support)
+- [License](#license)
+
 ## Installation
+<a id="installation"></a>
 
 Pull in the package using Composer
 
@@ -34,6 +43,7 @@ Include the facade within `config/app.php`.
 ```
 
 ## Configuration
+<a id="configuration"></a>
 
 This package supports configuration.
 
@@ -189,9 +199,10 @@ The configuration file has a multidimensional array called 'services' that defin
 Feel free to add / remove any other Loqate / PCA Predict Services. 
 
 
-# Usage
-Here is an example of making call to find address records for the given postcode. 
+## Usage
+<a id="usage"></a>
 
+Here is an example of making call to find address records for the given postcode. 
 
 Within your application call `\PA::getResponse( array $param )` with array of parameters. 
 
@@ -230,10 +241,12 @@ $response = \PA::getResponse( $param );
 ```
 For more information, please see Loqate's API documentation  [***PostcodeAnywhere Interactive RetrieveById (v1.30)***](http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/retrievebyid/1.3/) for required parameters and response.
 
-# Support
+## Support
+<a id="support"></a>
 
 If you find an error or have any suggestions, please [open an issue on GitHub](https://github.com/alexpechkarev/postcode-anywhere/issues)
 
-#License
+## License
+<a id="license"></a>
 
 Laravel API wrapper for Loqate / PCA Predict (formerly Postcode Anywhere) is released under the MIT License. See the bundled [LICENSE](https://github.com/alexpechkarev/postcode-anywhere/blob/master/LICENSE) file for details.
