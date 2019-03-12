@@ -10,19 +10,10 @@ return [
     | Service key - required
     | The key to use to authenticate to the service
     | String  - AA11-AA11-AA11-AA11
-    |
-    | Postcode - required
-    | The postcode to search with find.
-    |
-    |--------------------------------------------------------------------------
-    | Bank account validation parameters
-    |--------------------------------------------------------------------------
-    | Sortcode - Required
-    |
     */
 
     'params' => [
-        'key' => env('PCA_KEY', 'AA11-AA11-AA11-AA11'), //The key to use to authenticate to the service.
+        'key' => env('PCA_KEY', 'AA11-AA11-AA11-AA11'),
     ],
 
 
