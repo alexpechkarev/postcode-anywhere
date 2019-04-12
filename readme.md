@@ -12,6 +12,7 @@ This package requires the [**PHP cURL**](http://php.net/manual/en/curl.installat
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
+- [Detailed Example](#example)
 - [Support](#support)
 - [License](#license)
 
@@ -198,7 +199,6 @@ The configuration file has a multidimensional array called 'services' that defin
 
 Feel free to add / remove any other Loqate / PCA Predict Services. 
 
-
 ## Usage
 <a id="usage"></a>
 
@@ -221,30 +221,117 @@ $param = [
 ];
 ```
 
-Note: defaulted to `json` when `endpoint` parameter ommited.
+Note: `endpoint` is defaulted to `json` when it is omitted.
+
+### Detailed Example
+<a id="example"></a>
+
+You could have a Service Class, for example `Loqate`, and within this class you can do the heavy lifting in a `__construct` or `__invoke` magic method. Please find an example below:
+
+```php
+<?php
+
+namespace App\Services;
+
+class Loqate
+{
+    /**
+     * @var \Illuminate\Support\Collection
+     */
+    public $addresses;
+
+    /**
+     * Retrieve an address by it's postcode.
+     *
+     * @param string $postcode
+     *
+     * @return array
+     */
+    public function __construct($postcode)
+    {
+        // Build an addresses collection
+        $addresses = collect();
+
+        // Step 1: Search by postcode to get Loqate's internal ID.
+        $param = [
+            'find'  => 'FindByPostcode',
+            'param' => [
+                'postcode' => $postcode,
+                'endpoint' => 'json',
+            ],
+        ];
+
+        // JSON Decode the returned response into an array
+        $findResponse = json_decode(\PA::getResponse($param), true);
+
+        // Loop through the returned array
+        foreach ($findResponse as $findItem) {
+            if (array_key_exists('Id', $findItem)) {
+                // Step 2: Retrieve the full address by it's ID.
+                $param = [
+                    'retrieve' => 'RetrieveById',
+                    'param'    => [
+                        'id' => $findItem['Id'],
+                    ],
+                ];
+
+                // JSON Decode the returned response into an array
+                $retrieveResponse = json_decode(\PA::getResponse($param), true);
+
+                // Loop through the returned array
+                foreach ($retrieveResponse as $item) {
+                    // Push to the collection
+                    $addresses->push($item);
+                }
+            }
+        }
+
+        // Convert all keys to snake case
+        $addresses = $addresses->map(function ($value, $key) {
+            return collect($value)->keyBy(function ($value, $key) {
+                return snake_case($key);
+            });
+        });
+
+        $this->addresses = $addresses;
+    }
+
+    /**
+     * Retrieve the Addresses Property as an array.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return $this->addresses->toArray();
+    }
+
+    /**
+     * Retrieve the Addresses Property unmodified.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function get()
+    {
+        return $this->addresses;
+    }
+}
+```
+
+To use the above Service class, you could do something souch as the following:
+
+```php
+    $postcode = 'WR5 3DA';
+    $addresses = new App\Services\Loqate($postcode);
+    return $addresses->toArray();
+```
 
 For more information, please see Loqate's API documentation [**PostcodeAnywhere Interactive FindByPostcode (v1.00)**](http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/findbypostcode/1/) for required parameters and response.
-
-```php
-$response = \PA::getResponse( $param );
-```
-
-Here is another example of retrieving full address details based on the ID. 
-
-```php
-$param = [
-    'retrieve'=>'RetrieveById', 
-        'param'=>['id'=>'23747212.00'] 
-];
-
-$response = \PA::getResponse( $param );
-```
-For more information, please see Loqate's API documentation  [**PostcodeAnywhere Interactive RetrieveById (v1.30)**](http://www.postcodeanywhere.co.uk/support/webservice/postcodeanywhere/interactive/retrievebyid/1.3/) for required parameters and response.
 
 ## Support
 <a id="support"></a>
 
-If you find an error or have any suggestions, please [open an issue on GitHub](https://github.com/alexpechkarev/postcode-anywhere/issues)
+If you find an error or have any suggestions, please [open an issue on GitHub](https://github.com/alexpechkarev/postcode-anywhere/issues). 
 
 ## License
 <a id="license"></a>
